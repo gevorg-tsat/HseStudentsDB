@@ -1,16 +1,13 @@
 import psycopg2
+from settings import HOST, PASSWORD, DB_NAME, LOGIN
 
-host='127.0.0.1'
-login = 'postgres'
-password = ''
-db_name = 'postgres'
 
 def db_start():
     conn = psycopg2.connect(
-        dbname=db_name,
-        user=login, 
-        password=password,
-        host=host
+        dbname=DB_NAME,
+        user=LOGIN, 
+        password=PASSWORD,
+        host=HOST
     )
     print("db connected")
     cursor = conn.cursor()

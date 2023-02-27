@@ -1,9 +1,11 @@
 import pandas
 from db import db_start, get_info
+from settings import TABLE_PATH, NEW_TABLE
 
 if __name__ == "__main__":
     db_conn, cursor = db_start()
-    table = pandas.read_excel("Armyane.xlsx", index_col=0)
+    table = pandas.read_excel(TABLE_PATH, index_col=0)
+
     for fio, row in table.iterrows():
         data = get_info(cursor=cursor, fio=fio)
         if len(data) == 0:
@@ -20,4 +22,4 @@ if __name__ == "__main__":
         table.at[fio,'Группа'] = data[0][2]
         table.at[fio, 'Квалификация'] = qual
         table.at[fio, 'Курс'] = data[0][3]
-    table.to_excel("armyane_almost_fulldata.xlsx")
+    table.to_excel(NEW_TABLE)
