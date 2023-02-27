@@ -66,3 +66,10 @@ def add_student(db_conn, cursor, data: dict, group):
 def get_groups(cursor):
     cursor.execute("SELECT Oid from groups")
     return cursor.fetchall()
+
+def get_info(cursor, fio):
+        command = "select std.fio, faculties.name, groups.short_name, groups.course from (select fio, grp from students where " \
+        f"fio = '{fio}') std join groups on std.grp = groups.Oid join faculties on \
+        faculties.Oid = groups.faculty;"
+        cursor.execute(command)
+        return cursor.fetchall()
