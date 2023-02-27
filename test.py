@@ -1,4 +1,5 @@
 import ruz
-
-info = ruz.staff_of_group(127678)
-print(info)
+#info = ruz.groups(8543)
+data = "М_НС'СПСМБПС_Г_412474_1#Г#Научно-исследовательский семинар ''Облачные сервисы платежной системы Мир."
+data = data.replace("\'", "").replace('\"','')
+print(data)
