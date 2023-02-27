@@ -51,6 +51,18 @@ def add_group(db_conn, cursor, data: dict):
         print(data)
         exit()
 
+def init_students(db_conn, cursor):
+    cursor.execute('CREATE TABLE IF NOT EXISTS \
+                   students(Oid NUMERIC(12) primary key, \
+                   Gid NUMERIC(10), fio TEXT, grp NUMERIC(10) REFERENCES groups(Oid))')
+    db_conn.commit()
+
+def add_student(db_conn, cursor, data: dict, group):
+    command = f"INSERT INTO students (Oid, Gid, fio, grp) VALUES({data['studentOid']}, {data['studentGid']}, '{data['fio']}', {group})"
+    cursor.execute(command)
+    db_conn.commit()
+
+
 def get_groups(cursor):
     cursor.execute("SELECT Oid from groups")
     return cursor.fetchall()

@@ -1,5 +1,4 @@
 import ruz
-#info = ruz.groups(8543)
-data = "М_НС'СПСМБПС_Г_412474_1#Г#Научно-исследовательский семинар ''Облачные сервисы платежной системы Мир."
-data = data.replace("\'", "").replace('\"','')
-print(data)
+info = ruz.staff_of_group(129435)
+print(info)
+{'fio': 'Ческис Екатерина Владимировна', 'shortFIO': 'Ческис Е.В.', 'studentGUID': 'c6b0eb64-45af-4e4e-81b7-4b04a24eca85', 'studentGid': 46785, 'studentOid': 365934},
